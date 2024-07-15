@@ -5,7 +5,6 @@ def on_move(x, y):
     x, y= int(x), int(y)
     f.write(f"{x},{y}")
     f.close()
-    #return False  # Stop listener
-
+    
 with mouse.Listener(on_move=on_move) as listener:
     listener.join()
