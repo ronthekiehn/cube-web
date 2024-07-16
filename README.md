@@ -1,5 +1,15 @@
 # Cube
-Terminal cube in C (with a little Python)
+A quick spinning cube project. Runs raw in the terminal with no real C libraries like curses. Takes keyboard input using putchar(). Takes a simple spinning cube and adds a ton of features, include zooming, terminal resizing, and mouse and keyboard control.
+
+Built off of this guy's spinning C cube: https://github.com/servetgulnaroglu/cube.c  
+
+Lighting is based on this guy's spinning C donut: https://www.a1k0n.net/2011/07/20/donut-math.html
+
+## Features  
+
+
+
+
 
 ## Instructions
 First, make sure you have pynput installed in python. This can easily be done with `pip install pynput`.
