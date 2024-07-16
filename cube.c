@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <termios.h>
 #include <sys/ioctl.h>
+#include <signal.h>
+
 
 float A, B, C;
 float x, y, z;
@@ -24,6 +26,7 @@ float accel = 0.000001;
 int light = 0;
 int stats = 1;
 int lmode = 0;
+int end = 0;
 
 
 float calculateX(int i, int j, int k) {
@@ -147,16 +150,27 @@ int main(int argc, char *argv[]) {
     //python stuff for mousemove
     FILE *fp;
     FILE *fptr;
+    FILE *fpid;
     char path[32];
     int mousex, mousey;
+    pid_t pid;
 
-    fp = popen("python3 mouse.py", "r");
-    if (fp == NULL) {
-        printf("Failed to run mouse.py\n");
+    //we have to fork so we can kill python
+    // Fork a child process
+    pid = fork();
+    if (pid == -1) {
+        perror("fork");
         exit(1);
     }
 
-    while (1) {
+    //child, run python
+    if (pid == 0) {
+        execlp("python3", "python3", "mouse.py", (char *)NULL);
+        perror("execlp");
+        exit(1);
+    } else {
+    //everything else is the parent
+    while (!end) {
         //setup for resize term
         ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
         height = w.ws_row;
@@ -172,7 +186,7 @@ int main(int argc, char *argv[]) {
         buffer = (char*)realloc(buffer, width * height * sizeof(char));
 
         framecount++;
-
+        
         if (is_input_available()) {
             key = getchar();
             switch (key) {
@@ -235,7 +249,7 @@ int main(int argc, char *argv[]) {
                     light = !light;
                     break;
                 case 'p':
-                    exit(0);
+                    end = 1;
                     break;
                 case 'm':
                     mode++;
@@ -250,7 +264,7 @@ int main(int argc, char *argv[]) {
         if (mode == 0){ //auto spin
             A += 0.05;
             B += 0.05;
-            C += 0.05;
+            C += 0.01;
         } else if (mode == 1){ //acceleration control
             // v = v0 + at
             // d = d0 + vt
@@ -348,9 +362,11 @@ int main(int argc, char *argv[]) {
         }
         usleep(speed);
     }
+    }
 
     //reset terminal and free :)
-    pclose(fp);
+    kill(pid, SIGTERM);
+    waitpid(pid, NULL, 0);
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     free(buffer);
     free(zBuffer);
