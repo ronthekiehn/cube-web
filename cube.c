@@ -23,7 +23,7 @@ float K1 = 40;
 int idx;
 int fps = 24;
 float accel = 0.000001;
-int light = 0;
+int light = 1;
 int stats = 1;
 int lmode = 0;
 int end = 0;

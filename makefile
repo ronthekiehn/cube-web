@@ -10,3 +10,4 @@ cube: cube.c
 
 clean:
 	$(RM) cube
+	$(RM) mouse.txt
