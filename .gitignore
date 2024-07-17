@@ -42,7 +42,6 @@
 *.idb
 *.pdb
 **/.DS_Store
-*.txt
 
 
 # Kernel Module Compile Results

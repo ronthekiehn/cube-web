@@ -27,6 +27,8 @@ int light = 1;
 int stats = 1;
 int lmode = 0;
 int end = 0;
+int xres = 1440;
+int yres = 900;
 
 
 float calculateX(int i, int j, int k) {
@@ -178,8 +180,8 @@ int main(int argc, char *argv[]) {
 
         //setup for mouse control
         //set for 1440 x 900 screen
-        int halfw = 1440 / 2;
-        int halfh = 900 / 2;
+        int halfw = xres / 2;
+        int halfh = yres / 2;
         float rad = halfw;
 
         zBuffer = (float*)realloc(zBuffer, width * height * sizeof(float));
