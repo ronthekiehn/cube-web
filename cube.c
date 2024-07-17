@@ -287,7 +287,7 @@ int main(int argc, char *argv[]) {
             // Open the file where mouse position is written
             fptr = fopen("mouse.txt", "r");
             if (fptr == NULL) {
-                printf("Failed to open file\n");
+                printf("Failed to open mouse.txt\n");
                 pclose(fp);
                 exit(1);
             }
