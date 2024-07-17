@@ -7,6 +7,7 @@ all: cube
 
 cube: cube.c
 	$(CC) -o cube cube.c
+	touch mouse.txt
 
 clean:
 	$(RM) cube
