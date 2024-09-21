@@ -3,7 +3,8 @@ The spinning cube is now in your browser with the power of WASM
 [ronthekiehn.github.io/cube-web/](https://ronthekiehn.github.io/cube-web/)
 
 ## Features  
- - Dark mode support!!
+ - Change resolution
+ - Dark mode support
  - Lighting calculated from surface normals of each side (press <kbd>l</kbd> to toggle light on and off to see the difference)
  - Zoom in and out
  - Reset cube position
@@ -22,9 +23,15 @@ Auto mode has the same default behavior as the original spinning cube
 
 There are some more controls in the other modes. 
 
+**Manual Mode**
+This mode lets you control where the cube is facing using wasdqe
+- <kbd>w</kbd>/<kbd>s</kbd>: x-axis  
+- <kbd>a</kbd>/<kbd>d</kbd>: y-axis  
+- <kbd>q</kbd>/<kbd>e</kbd>: x-axis  
+
 **Acceleration Control Mode**  
 
-This mode lets you control which direction the cube is spinning using simple kinematic equations
+This mode lets you apply acceleration to the cube using kinematics
 - <kbd>w</kbd>/<kbd>s</kbd>: x-axis acceleration  
 - <kbd>a</kbd>/<kbd>d</kbd>: y-axis acceleration  
 - <kbd>q</kbd>/<kbd>e</kbd>: x-axis acceleration  
