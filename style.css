@@ -1,6 +1,7 @@
 body {
     background-color: #fcf6e5;
     font-family: monospace;
+    overflow: hidden;
 }
 
 .ctrl{
