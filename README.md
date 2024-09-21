@@ -1,8 +1,6 @@
-# Cube
-The spinning cube is now in your browser with the power of WASM
-
-My original cube: [https://github.com/ronthekiehn/Cube](https://github.com/ronthekiehn/Cube)
-
+# cube-web
+The spinning cube is now in your browser with the power of WASM  
+[ronthekiehn.github.io/cube-web/](ronthekiehn.github.io/cube-web/)
 
 ## Features  
  - Dark mode support!!
@@ -37,6 +35,8 @@ Use the mouse to control the direction the cube is facing.
 
 
 ## Credit
+See the original cube I made for the terminal: [https://github.com/ronthekiehn/Cube](https://github.com/ronthekiehn/Cube)
+
 A lot of credit goes to these two!! 
 Built off of this spinning C cube: [https://github.com/servetgulnaroglu/cube.c](https://github.com/servetgulnaroglu/cube.c)
 
