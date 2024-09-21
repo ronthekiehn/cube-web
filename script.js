@@ -23,7 +23,6 @@ const frameInterval = 1000 / fps;
 let lastFrameTime = 0;
 
 function updateFrame(currentTime) {
-    updateArrow(Xaccel, Yaccel, Zaccel);
     if (currentTime - lastFrameTime >= frameInterval){
         if (mode === 0) { // auto spin
             rotationX += 0.05;
