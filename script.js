@@ -12,10 +12,11 @@ let Xaccel = 0, Yaccel = 0, Zaccel = 0;
 let XVelocity = 0, YVelocity = 0, ZVelocity = 0;
 let XTime = 0, YTime = 0, ZTime = 0;
 let mode = 0, accel = 0.000001;
-let distance = 100, light = true;
+let distance = 150, light = true;
 let halfw = window.innerWidth / 2, halfh = window.innerHeight / 2;
 let rad = Math.sqrt(halfw * halfw + halfh * halfh);
 let darkMode = false;
+let cubeWidth = 20;
 
 const fps = 24;
 const frameInterval = 1000 / fps;
@@ -27,26 +28,26 @@ function updateFrame(currentTime) {
             rotationX += 0.05;
             rotationY += 0.05;
             rotationZ += 0.01;
-        } else if (mode === 1) { // acceleration control
+        } else if (mode === 2) { // acceleration control
             XTime++;
             YTime++;
             ZTime++;
             XVelocity += (Xaccel * XTime);
             YVelocity += (Yaccel * YTime);
             ZVelocity += (Zaccel * ZTime);
-            rotationX += YVelocity;
-            rotationY += XVelocity;
+            rotationX += XVelocity;
+            rotationY += YVelocity;
             rotationZ += ZVelocity;
-            
         }
       
         Module._updateRotation(rotationX, rotationY, rotationZ);
         Module._updateDistance(distance);
+        Module._updateCubeWidth(cubeWidth);
         Module._updateLight(light);
         Module._darkMode(darkMode);
 
-        const height = Math.floor(window.innerHeight / 15);
-        const width = Math.floor(window.innerWidth / 15);
+        const height = Math.floor(window.innerHeight / (200 / cubeWidth));
+        const width = Math.floor(window.innerWidth / (200 /cubeWidth));
         const bufferPtr = Module._renderFrame(height, width);
         const buffer = Module.HEAPU8.subarray(bufferPtr, bufferPtr + width * height);
         let frameContent = '';
@@ -69,7 +70,7 @@ function updateFrame(currentTime) {
 
 
 document.addEventListener('mousemove', (event) => {
-    if (mode === 2) {
+    if (mode === 3) {
         halfw = window.innerWidth / 2, halfh = window.innerHeight / 2;
         rad = Math.sqrt(halfw * halfw + halfh * halfh);
         let mousex = event.clientX - halfw;
@@ -80,7 +81,28 @@ document.addEventListener('mousemove', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-    if (mode === 1){
+    if (mode === 1) {
+        switch (event.key) {
+            case 'w':
+                rotationX += 0.1;
+                break;
+            case 's':
+                rotationX -= 0.1;
+                break;
+            case 'a':
+                rotationY -= 0.1;
+                break;
+            case 'd':
+                rotationY += 0.1;
+                break;
+            case 'q':
+                rotationZ += 0.1;
+                break;
+            case 'e':
+                rotationZ -= 0.1;
+                break;
+        }
+    } else if (mode === 2){
         switch (event.key) {
             case 'w':
                 Yaccel += accel;
@@ -91,11 +113,11 @@ document.addEventListener('keydown', (event) => {
                 YTime = 0;
                 break;
             case 'a':
-                Xaccel += accel;
+                Xaccel -= accel;
                 XTime = 0;
                 break;
             case 'd':
-                Xaccel -= accel;
+                Xaccel += accel;
                 XTime = 0;
                 break;
             case 'q':
@@ -107,7 +129,7 @@ document.addEventListener('keydown', (event) => {
                 ZTime = 0;
                 break;
         }
-    }
+    } 
     switch (event.key) {
         case 'r': // reset
             XVelocity = 0;
@@ -124,7 +146,7 @@ document.addEventListener('keydown', (event) => {
             rotationZ = 0;
             break;
         case 'm': // change mode
-            mode = (mode + 1) % 3;
+            mode = (mode + 1) % 4;
             document.getElementById('controlMode').value = mode;
             break;
         case 'l': // toggle light
@@ -153,6 +175,11 @@ document.getElementById('toggleLight').addEventListener('change', (event) => {
 
 document.getElementById('distance').addEventListener('input', (event) => {
     distance = event.target.value;
+});
+
+document.getElementById('resolution').addEventListener('input', (event) => {
+    cubeWidth = event.target.value;
+    document.getElementById('cubeCanvas').style.fontSize = `${320 / cubeWidth}px`;
 });
 
 const darkModeToggle = document.getElementById('darkMode');

@@ -1287,6 +1287,7 @@ var _updateRotation = Module['_updateRotation'] = createExportWrapper('updateRot
 var _updateDistance = Module['_updateDistance'] = createExportWrapper('updateDistance', 1);
 var _updateLight = Module['_updateLight'] = createExportWrapper('updateLight', 1);
 var _darkMode = Module['_darkMode'] = createExportWrapper('darkMode', 1);
+var _updateCubeWidth = Module['_updateCubeWidth'] = createExportWrapper('updateCubeWidth', 1);
 var _renderFrame = Module['_renderFrame'] = createExportWrapper('renderFrame', 2);
 var _cleanup = Module['_cleanup'] = createExportWrapper('cleanup', 0);
 var _free = Module['_free'] = createExportWrapper('free', 1);

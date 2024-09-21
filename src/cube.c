@@ -9,7 +9,7 @@ int width, height;
 float* zBuffer = NULL;
 char* buffer = NULL;
 int background = ' ';
-float increment = 0.6;
+float increment = 1;
 int distance;
 float K1 = 40;
 int light = 1;
@@ -100,6 +100,11 @@ void updateLight(int newLight) {
 EMSCRIPTEN_KEEPALIVE
 void darkMode(int newMode) {
     lmode = newMode;
+}
+
+EMSCRIPTEN_KEEPALIVE
+void updateCubeWidth(int newCubeWidth) {
+    cubeWidth = newCubeWidth;
 }
 
 

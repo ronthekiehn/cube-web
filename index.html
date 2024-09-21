@@ -17,11 +17,12 @@
             </div>  
         </div>
         <div class="ctrl">
-            <label for="controlMode">Control Mode 'm'</label>
+            <label for="controlMode">Mode 'm'</label>
             <select id="controlMode" name="controlMode">
                 <option value=0>Auto</option>
-                <option value=1>Accel 'wasdqe'</option>
-                <option value=2>Mouse</option>
+                <option value=1>Manual</option>
+                <option value=2>Accel 'wasdqe'</option>
+                <option value=3>Mouse</option>
             </select>
         </div>
         <div class="ctrl">
@@ -33,7 +34,11 @@
         </div>
         <div class="ctrl">
             <label for="distance">Zoom '=/-'</label>
-            <input type="range" id="distance" name="distance" min="90" max="300" value="100">
+            <input class="slider" type="range" id="distance" name="distance" min="100" max="300" value="150">
+        </div>
+        <div class="ctrl">
+            <label for="resolution">Resolution</label>
+            <input class="slider" type="range" id="resolution" name="resolution" min="5" max="40" value="20">
         </div>
         <button class="ctrl" id="reset">Reset Position 'r'</button>
     </div>

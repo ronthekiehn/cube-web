@@ -72,16 +72,19 @@ input[type="checkbox"]:checked + .checkmark{
     align-items: center;
     height: 100vh;
 }
-#distance {
+.slider {
     display: inline-block;
-    transform: rotate(180deg);
     appearance: none;
     background-color: #fff;
     border: 2px solid #000;
     margin: 0;
 }
 
-#distance::-webkit-slider-thumb {
+#distance{
+    transform: rotate(180deg);
+}
+
+.slider::-webkit-slider-thumb {
     appearance: none;
     width: 16px;
     height: 16px;
@@ -91,7 +94,7 @@ input[type="checkbox"]:checked + .checkmark{
     cursor: pointer;
 }
 
-#distance::-moz-range-thumb {
+.slider::-moz-range-thumb {
     width: 16px;
     height: 16px;
     background-color: #000;
@@ -109,5 +112,7 @@ input[type="checkbox"]:checked + .checkmark{
     align-self: center;
 }
 #reset:hover {
-    background-color: #eee;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
 }
