@@ -1,6 +1,6 @@
 # cube-web
 The spinning cube is now in your browser with the power of WASM  
-[ronthekiehn.github.io/cube-web/](ronthekiehn.github.io/cube-web/)
+[ronthekiehn.github.io/cube-web/](https://ronthekiehn.github.io/cube-web/)
 
 ## Features  
  - Dark mode support!!
