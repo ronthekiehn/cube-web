@@ -23,6 +23,7 @@ const frameInterval = 1000 / fps;
 let lastFrameTime = 0;
 
 function updateFrame(currentTime) {
+    updateArrow(Xaccel, Yaccel, Zaccel);
     if (currentTime - lastFrameTime >= frameInterval){
         if (mode === 0) { // auto spin
             rotationX += 0.05;
@@ -35,9 +36,10 @@ function updateFrame(currentTime) {
             XVelocity += (Xaccel * XTime);
             YVelocity += (Yaccel * YTime);
             ZVelocity += (Zaccel * ZTime);
-            rotationX += XVelocity;
-            rotationY += YVelocity;
+            rotationY += XVelocity;
+            rotationX += YVelocity;
             rotationZ += ZVelocity;
+           
         }
       
         Module._updateRotation(rotationX, rotationY, rotationZ);
@@ -233,3 +235,4 @@ document.getElementById('darkmode-checkmark').addEventListener('click', function
         document.body.style.color = '#000';
     }
 });
+
