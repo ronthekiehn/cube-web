@@ -1,0 +1,113 @@
+body {
+    background-color: #fcf6e5;
+    font-family: monospace;
+}
+
+.ctrl{
+    margin-bottom: 10px;
+}
+
+select {
+    font-family: monospace;
+    border: #000 2px solid;
+}
+
+.checkers {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-color: #fff;
+    accent-color: #000;
+    border-radius: 0;
+    border: 2px solid #000;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #000;
+}
+
+input[type="checkbox"]:checked + .checkmark{
+    display: block;
+}
+
+.checkmark{
+    display: none;
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 4px;
+    width: 4px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#controls {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    top: 10px;
+    left: 10px;
+}
+#cubeCanvas {
+    white-space: pre;
+    line-height: 1.2;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#distance {
+    display: inline-block;
+    transform: rotate(180deg);
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #000;
+    margin: 0;
+}
+
+#distance::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+#distance::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+#reset {
+    font-family: monospace;
+    background-color: #fff;
+    cursor: pointer;
+    border: 2px solid #000;
+    margin: 0;
+    align-self: center;
+}
+#reset:hover {
+    background-color: #eee;
+}

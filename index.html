@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>cube dot c</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="cubeCanvas"></div>
+    <div id="controls">
+        <div class="ctrl">
+            <label for="darkMode">Dark Mode</label>
+            <div class="checkers">
+                <input type="checkbox" id="darkMode" name="darkMode">
+                <span class="checkmark" id="darkmode-checkmark"></span>
+            </div>  
+        </div>
+        <div class="ctrl">
+            <label for="controlMode">Control Mode 'm'</label>
+            <select id="controlMode" name="controlMode">
+                <option value=0>Auto</option>
+                <option value=1>Accel 'wasdqe'</option>
+                <option value=2>Mouse</option>
+            </select>
+        </div>
+        <div class="ctrl">
+            <label for="toggleLight">Lighting 'l'</label>
+            <div class="checkers">
+                <input type="checkbox" id="toggleLight" name="toggleLight" checked>
+                <span class="checkmark" id="light-checkmark"></span>
+            </div>  
+        </div>
+        <div class="ctrl">
+            <label for="distance">Zoom '=/-'</label>
+            <input type="range" id="distance" name="distance" min="90" max="300" value="100">
+        </div>
+        <button class="ctrl" id="reset">Reset Position 'r'</button>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="cube.js"></script>
+</body>
+</html>
