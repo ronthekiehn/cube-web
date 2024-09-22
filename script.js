@@ -17,6 +17,7 @@ let halfw = window.innerWidth / 2, halfh = window.innerHeight / 2;
 let rad = Math.sqrt(halfw * halfw + halfh * halfh);
 let darkMode = false;
 let cubeWidth = 20;
+let FOV = 40;
 
 const fps = 24;
 const frameInterval = 1000 / fps;
@@ -46,6 +47,7 @@ function updateFrame(currentTime) {
         Module._updateCubeWidth(cubeWidth);
         Module._updateLight(light);
         Module._darkMode(darkMode);
+        Module._updateFOV(FOV);
 
         const height = Math.floor(window.innerHeight / (200 / cubeWidth));
         const width = Math.floor(window.innerWidth / (200 /cubeWidth));
@@ -133,18 +135,7 @@ document.addEventListener('keydown', (event) => {
     } 
     switch (event.key) {
         case 'r': // reset
-            XVelocity = 0;
-            Xaccel = 0;
-            YVelocity = 0;
-            Yaccel = 0;
-            ZVelocity = 0;
-            Zaccel = 0;
-            XTime = 0;
-            YTime = 0;
-            ZTime = 0;
-            rotationX = 0;
-            rotationY = 0;
-            rotationZ = 0;
+            reset();
             break;
         case 'm': // change mode
             mode = (mode + 1) % 4;
@@ -174,8 +165,15 @@ document.getElementById('toggleLight').addEventListener('change', (event) => {
     light = event.target.checked;
 });
 
-document.getElementById('distance').addEventListener('input', (event) => {
+const distanceSlider = document.getElementById('distance')
+distanceSlider.addEventListener('input', (event) => {
     distance = event.target.value;
+});
+
+document.getElementById('FOV').addEventListener('input', (event) => {
+    FOV = event.target.value;
+    distance = (FOV / 40) * 150;
+    distanceSlider.value = distance;
 });
 
 document.getElementById('resolution').addEventListener('input', (event) => {
@@ -198,11 +196,14 @@ const darkModeToggle = document.getElementById('darkMode');
 const switchMode = document.getElementById('controlMode');
 switchMode.addEventListener('change', (event) => {
     mode = parseInt(event.target.value, 10);
-    console.log('Mode:', mode);
 });
 
 const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => {
+    reset();
+});
+
+function reset(){
     XVelocity = 0;
     Xaccel = 0;
     YVelocity = 0;
@@ -215,8 +216,16 @@ resetButton.addEventListener('click', () => {
     rotationX = 0;
     rotationY = 0;
     rotationZ = 0;
-});
+    distance = 150;
+    cubeWidth = 20;
+    FOV = 40;
+    cubeWidth = 20;
+    document.getElementById('distance').value = distance;
+    document.getElementById('FOV').value = FOV;
+    document.getElementById('resolution').value = cubeWidth;
+    document.getElementById('cubeCanvas').style.fontSize = `16px`;
 
+};
 
 document.getElementById('light-checkmark').addEventListener('click', function() {  
     light = !light;

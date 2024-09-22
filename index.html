@@ -33,14 +33,18 @@
             </div>  
         </div>
         <div class="ctrl">
-            <label for="distance">Zoom '=/-'</label>
-            <input class="slider" type="range" id="distance" name="distance" min="100" max="300" value="150">
+            <label for="resolution">Resolution/Size</label>
+            <input class="slider" type="range" id="resolution" name="resolution" min="1" max="100" value="20">
         </div>
         <div class="ctrl">
-            <label for="resolution">Resolution</label>
-            <input class="slider" type="range" id="resolution" name="resolution" min="5" max="40" value="20">
+            <label for="distance">Distance '=/-'</label>
+            <input class="slider" type="range" id="distance" name="distance" min="0" max="1500" value="150">
         </div>
-        <button class="ctrl" id="reset">Reset Position 'r'</button>
+        <div class="ctrl">
+            <label for="FOV">FOV:</label>
+            <input class="slider" type="range" id="FOV" name="FOV" min="1" max="400" value="40">
+        </div>
+        <button class="ctrl" id="reset">Reset 'r'</button>
     </div>
     
     <script src="script.js"></script>

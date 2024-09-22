@@ -1284,6 +1284,7 @@ var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors', 0);
 var _init = Module['_init'] = createExportWrapper('init', 0);
 var _malloc = Module['_malloc'] = createExportWrapper('malloc', 1);
 var _updateRotation = Module['_updateRotation'] = createExportWrapper('updateRotation', 3);
+var _updateFOV = Module['_updateFOV'] = createExportWrapper('updateFOV', 1);
 var _updateDistance = Module['_updateDistance'] = createExportWrapper('updateDistance', 1);
 var _updateLight = Module['_updateLight'] = createExportWrapper('updateLight', 1);
 var _darkMode = Module['_darkMode'] = createExportWrapper('darkMode', 1);

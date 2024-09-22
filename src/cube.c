@@ -88,6 +88,11 @@ void updateRotation(float newA, float newB, float newC) {
 }
 
 EMSCRIPTEN_KEEPALIVE
+void updateFOV(int newK1) {
+    K1 = newK1;
+}
+
+EMSCRIPTEN_KEEPALIVE
 void updateDistance(int newDistance) {
     distance = newDistance;
 }
