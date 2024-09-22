@@ -3,10 +3,11 @@ The spinning cube is now in your browser with the power of WASM
 [ronthekiehn.github.io/cube-web/](https://ronthekiehn.github.io/cube-web/)
 
 ## Features  
- - Change resolution
- - Dark mode support
+ - Change FOV
+ - Change distance
+ - Change cube size 
+ - Dark mode 
  - Lighting calculated from surface normals of each side (press <kbd>l</kbd> to toggle light on and off to see the difference)
- - Zoom in and out
  - Reset cube position
  - Kinematics-based acceleration mode that lets you accelerate the cube on all three axes
  - Mouse control mode that makes the cube face your mouse
